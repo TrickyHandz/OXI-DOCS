@@ -7,7 +7,7 @@ This repository contains public documentation and community issues for the **OXI
 - 🔒 **Code**: Source code is maintained in a private repository
 
 ## Links
-- 🌐 [Documentation](https://trickyhandz.github.io/oxi-docs/)
+- 🌐 [Documentation](https://trickyhandz.github.io/OXI-DOCS/)
 - 🔐 [Private Source Repo](Private – internal use only)
 
 ## License
