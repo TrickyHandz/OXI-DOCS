@@ -3,3 +3,7 @@ baseurl: /OXI-DOCS
 permalink: pretty
 markdown: kramdown
 theme: minima
+
+# Limit header nav to only the home page for now
+header_pages:
+  - index.md
