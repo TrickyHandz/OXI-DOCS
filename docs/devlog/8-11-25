@@ -1,0 +1,35 @@
+# Dev Log – Pose-Centric Tracking and Input System Wiring
+
+This is the first narrative dev log for OXI, so before diving into today’s work I want to share a little bit about where this project started and why it exists.
+
+OXI began as a reaction to my experiences with Unity’s XR Interaction Toolkit (XRI). While XRI is feature-rich, I found it overly complex for what I wanted — too many management objects, too much indirection, and not enough clarity. I wanted something lightweight, straightforward, and logical, something that aligned closely with the structure of the OpenXR standard without forcing developers into rigid patterns.  
+
+My starting point for OXI was a simple, engine-agnostic core that could define XR data in clean, type-safe ways. I wanted developers to be able to query data paths that read naturally, like `User.Head.Pose.Position` or `User.Hand.Right.Pose.Orientation`, without having to wrestle with Unity’s GameObject hierarchy or vendor-specific SDK quirks. The initial focus was on building strong data structures, and then layering Unity integration on top without polluting the core.
+
+---
+
+## Today’s Focus
+
+Today I tackled one of the bigger structural shifts in OXI’s tracking layer: bringing it closer to the OpenXR standard without breaking Unity’s workflow.  
+
+OpenXR makes things really clear: the `XrPosef` struct (orientation and position together) is the source of truth for where something is in space. Velocities come separately, via `XrSpaceVelocity`, and each has its own validity flag. That is clean and logical, but Unity’s Input System does not give us that neat little package. There is no single "Pose" coming through, only separate position and rotation values.  
+
+Instead of trying to fight Unity, I embraced composition. Now, **Pose is still the authoritative concept in our API**, but under the hood we build it ourselves from Position and Orientation channels. Both have to be valid before a Pose is considered valid, and whichever updated most recently sets the timestamp for the whole thing. This way, downstream consumers get atomic snapshots instead of mismatched values.  
+
+To make this whole system more flexible, I introduced `IDataChannel<T>`. Every tracked property — Pose, Position, Orientation, Velocity, AngularVelocity — now travels through one of these channels. A channel does not just store the value; it knows if the value is valid, what time it was last updated, and it can push updates through an event. This means consumers can either pull the latest data on demand or subscribe to be notified when something changes.  
+
+I also restructured how roles work. Components like `XRHandBehaviour` no longer directly pull data from the device. Instead, they hold a reference to a provider (`IUnityXRTrackingProvider`). That provider can be swapped out at will: real hardware, simulation, playback, without the role caring where the data is coming from. The result is cleaner separation and a lot more flexibility down the line.  
+
+For the Unity layer, I created simple `InputActionChannelVector3` and `InputActionChannelQuaternion` components. These are adapters that turn Unity’s `InputActionReference` into our `IDataChannel<T>`. One important choice here: I set all these Input Actions to **Pass Through** mode instead of **Value**. Pass Through does not filter out tiny changes or consume the control, so every frame’s worth of raw device data comes through. This is essential for Pose composition: if Position updates but Orientation does not, or vice versa, you end up with mismatched timestamps and a Pose that is technically out of sync.  
+
+Velocities are handled as their own channels, with their own validity flags. If Unity’s Input System provides them, we pass them along untouched. If not, we just leave them invalid, with no on-the-fly derivation yet. That is something I might build later, but I want to keep this first iteration lean and device-truthful.  
+
+By the end of the day, I had:
+- Core interfaces (`IXRTrackingProvider`, `IXRTrackingChannels`, `IDataChannel`) solidified in the engine-agnostic layer.
+- Unity alias `IUnityXRTrackingProvider` to standardize tracking data using Unity’s Vector3/Quaternion/Pose types.
+- `ComposedUnityPoseProvider` building authoritative Pose snapshots from independent Position and Orientation channels.
+- `XRHandBehaviour` running on the new composition-first role pattern, pulling everything from a provider instead of owning the tracking logic itself.
+
+Next up, I will finish wiring the Input Action channel components, decide how much of this should auto-assign in the inspector, and start looking at documenting coordinate spaces so it is obvious what “Position” means in every context.  
+
+Today was all about re-centering OXI’s tracking on Pose, even if Unity will not hand me one directly. Now, no matter the backend or the input source, that one concept stays consistent, and that is going to pay off big when this system starts handling more than just hands and head.
