@@ -1,5 +1,3 @@
-# OXI Documentation
-
 I’m actively developing OXI and using this space to host my development logs.
 The long‑term goal is to make OXI approachable for newcomers, while giving experienced XR developers a clean, structured API for Unity‑based OpenXR projects.
 
