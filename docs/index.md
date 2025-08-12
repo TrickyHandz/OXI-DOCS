@@ -9,10 +9,8 @@ The long‑term goal is to make OXI approachable for newcomers, while giving exp
 
 Follow along with design decisions, technical deep dives, and progress updates.
 
-- **2025‑08‑12 (Supplemental)** — [OXI’s Structured API Philosophy](devlog/2025-08-12-s1.md)
-- **2025‑08‑11** — [Dev Log](devlog/2025-08-11.md)
-
-> If your filenames or folders differ, update the relative links above.
+- **2025-08-12 (Supplemental)** — [OXI’s Structured API Philosophy](devlog/2025-08-12-s1.md)
+- **2025-08-11** — [Dev Log](devlog/2025-08-11.md)
 
 ---
 
@@ -31,7 +29,7 @@ Planned topics:
 
 ## 💻 OXI Coding *(Coming Soon)*
 
-The scripting reference, intentionally named **“OXI Coding”** (a wink at the common mispronunciation “Oxycodine”) because this section is here to remove the pain of messy XR APIs.
+The scripting reference, intentionally named **“OXI Coding”**. Hopeing the homonym isn't lost.
 
 Planned topics:
 - Namespaces and assemblies
