@@ -9,8 +9,8 @@ The long‑term goal is to make OXI approachable for newcomers, while giving exp
 
 Follow along with design decisions, technical deep dives, and progress updates.
 
-- **2025‑08‑12 (Supplemental)** — [OXI’s Structured API Philosophy]({{ site.baseurl }}/devlog/2025-08-12-s1/)
-- **2025‑08‑11** — [Dev Log]({{ site.baseurl }}/devlog/2025-08-11/)
+- **2025‑08‑12 (Supplemental)** - [OXI’s Structured API Philosophy]({{ site.baseurl }}/devlog/2025-08-12-s1/)
+- **2025‑08‑11** - Dev Log]({{ site.baseurl }}/devlog/2025-08-11/)
 
 ---
 
