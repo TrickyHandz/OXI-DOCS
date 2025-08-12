@@ -1,2 +1,5 @@
-title: OXI Toolkit
+title: OXI Docs
+baseurl: /OXI-DOCS
+permalink: pretty
+markdown: kramdown
 theme: minima
