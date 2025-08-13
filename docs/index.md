@@ -6,7 +6,8 @@ The long‑term goal is to make OXI approachable for newcomers, while giving exp
 ## 📓 Dev Logs
 
 Follow along with design decisions, technical deep dives, and progress updates.
-
+- **2025-08-12** — 
+[Housekeeping and Testing]({{site.baseurl}}/devlog/8-12-25/)
 - **2025‑08‑12 (Supplemental)** — [OXI’s Structured API Philosophy]({{ site.baseurl }}/devlog/8-12-25-s01/)
 - **2025‑08‑11** — [Pose-Centric Tracking and Input System Wiring]({{ site.baseurl }}/devlog/8-11-25/)
 
