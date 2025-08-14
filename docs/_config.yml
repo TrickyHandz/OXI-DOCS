@@ -17,7 +17,7 @@ collections:
     output: true
   devlog:
     output: true
-    permalink: /devlog/:slug/
+    permalink: /devlog/:name/
   changelog:
     output: true
 

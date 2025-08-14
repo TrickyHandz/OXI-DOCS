@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <title>{{ page.title }} - {{ site.title }}</title>
     {%- seo -%}
+    <!-- Assets -->
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   </head>
   <body>
+    <header class="site-header">
+      <!-- Header brand link -->
+      <a class="site-title" href="{{ '/' | relative_url }}">OXI-DOCS</a>
+
+      <!-- Search form action -->
+      <form class="site-search" action="{{ '/search/' | relative_url }}" method="get" role="search">
+        <input type="search" name="q" id="q" placeholder="Search OXI docs" aria-label="Search" />
+      </form>
+    </header>
+
     {{ content }}
+
+    <footer class="site-footer">
+      <!-- Footer RSS -->
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </footer>
+
+    <!-- Assets -->
     <script src="{{ '/assets/js/site.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
   </body>
 </html>
