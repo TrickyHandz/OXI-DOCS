@@ -1,0 +1,9 @@
+:root { --gap: 1rem; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+.hero { padding: 2rem 1rem; }
+.cta-row { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+.btn { display: inline-block; padding: .6rem .9rem; border-radius: .5rem; background: #111827; color: #fff; text-decoration: none; }
+.latest-devlog { padding: 1rem; }
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li { margin: 0 0 .75rem 0; }
+.post-date { color: #6b7280; font-size: .9rem; margin-left: .5rem; }
