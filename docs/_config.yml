@@ -2,8 +2,20 @@ title: OXI Docs
 baseurl: /OXI-DOCS
 permalink: pretty
 markdown: kramdown
-theme: minima
-
-# Limit header nav to only the home page for now
-header_pages:
-  - index.md
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+collections:
+  concepts:
+    output: true
+  unity:
+    output: true
+  tutorials:
+    output: true
+  devlog:
+    output: true
+  changelog:
+    output: true
