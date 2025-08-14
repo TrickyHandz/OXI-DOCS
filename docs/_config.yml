@@ -1,4 +1,4 @@
-title: OXI Docs
+title: OXI-DOCS
 baseurl: /OXI-DOCS
 permalink: pretty
 markdown: kramdown
@@ -17,5 +17,18 @@ collections:
     output: true
   devlog:
     output: true
+    permalink: /devlog/:slug/
   changelog:
     output: true
+
+feed:
+  collections:
+    - devlog
+
+defaults:
+  - scope:
+      path: "_devlog"
+      type: "devlog"
+    values:
+      layout: post
+      tags: ["devlog"]
