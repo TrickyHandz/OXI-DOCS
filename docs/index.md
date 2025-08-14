@@ -1,8 +1,30 @@
 ---
 layout: default
 title: Home
+permalink: /
 ---
 
-# Welcome to OXI Docs
+<section class="hero">
+  <h1>OXI - OpenXR Interactions: Reducing the pain of XR Development</h1>
+  <p>A lightweight, OpenXR-aligned toolkit with a clear, strongly-typed path API and Unity 6 integration.</p>
+  <div class="cta-row">
+    <a class="btn" href="/manual/">OXI Manual</a>
+    <a class="btn" href="/api/latest/">API Reference</a>
+    <a class="btn" href="/devlog/">Dev Logs</a>
+  </div>
+</section>
 
-This is the placeholder homepage for the documentation site.
+<section class="latest-devlog">
+  <h2>Latest Dev Logs</h2>
+  <ul class="post-list">
+    {% assign posts = site.devlog | sort: 'date' | reverse %}
+    {% for post in posts limit:3 %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+        {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncate: 160 }}</p>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <p><a href="/devlog/">View all dev logs</a> · <a href="/feed.xml">RSS</a></p>
+</section>
