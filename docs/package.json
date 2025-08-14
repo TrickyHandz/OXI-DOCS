@@ -1,0 +1,7 @@
+{
+  "name": "oxi-docs",
+  "private": true,
+  "scripts": {
+    "fix:devlog": "node tools/fix-devlog-frontmatter.js"
+  }
+}
